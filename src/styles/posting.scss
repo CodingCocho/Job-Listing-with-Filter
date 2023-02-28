@@ -1,0 +1,59 @@
+.posting-container
+{
+  background-color: white;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  padding-bottom: 5px !important;
+  width: 350px;
+  .logo
+  {
+    height: 50px;
+    position: relative;
+    top: -35px;
+    width: 50px;
+  }
+  .job-details
+  {
+    position: relative;
+    top: -25px;
+    .flex-container-1
+    {
+      display: flex;
+      .company-name
+      {
+        color: hsl(180, 29%, 50%);
+        font-size: 15px;
+        font-weight: 700;
+        margin-top: 5px;
+      }
+    }
+    .job-title
+    {
+      color: hsl(180, 14%, 20%);
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+    .job-posting-details
+    {
+      color: hsl(180, 29%, 50%);
+      font-size: 15px;
+      margin-top: 5px;
+    }
+  }
+  .mobile-divider
+  {
+    background-color: hsl(180, 29%, 50%);
+    height: 1px;
+    outline: none;
+    position: relative;
+    top: -15px;
+  }
+  .filters
+  {
+    position: relative;
+    top: -5px;
+  }
+}

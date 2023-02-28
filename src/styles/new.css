@@ -1,0 +1,10 @@
+.new-container
+{
+  background-color: hsl(180, 29%, 50%);
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+  margin-left: 25px;
+  padding: 5px;
+  width: fit-content;
+}
