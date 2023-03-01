@@ -4,19 +4,22 @@ import {New} from './New';
 import {PostingProps} from '../interfaces/PostingProps';
 import '../styles/posting.css';
 
-export const Posting = (): JSX.Element =>
+export const Posting = (props: PostingProps): JSX.Element =>
 {
+
+
+  const {company, contract, isFeatured, id, languages, level, location, logo, isNew, position, postedAt, role, tools} = props;
 
   return (
     <>
       <div 
       className="posting-container"
-      id="1"
+      id={id.toString()}
       >
         <img 
         alt="company" 
         className="logo"
-        src="/images/photosnap.svg" 
+        src={logo}
         />
         <div 
         className="job-details"
@@ -27,20 +30,20 @@ export const Posting = (): JSX.Element =>
             <p 
             className="company-name"
             >
-              Photosnap
+              {company}
             </p>
-            <New />
-            <Featured />
+            {isNew && <New />}
+            {isFeatured && <Featured />}
           </div>
           <p 
           className="job-title"
           >
-            Senior Frontend Developer
+            {position}
           </p>
           <div 
           className="job-posting-details"
           >
-            1d ago • Full Time • USA only
+            {postedAt} • {contract} • {location}
           </div>
         </div>
         <hr 
@@ -50,8 +53,33 @@ export const Posting = (): JSX.Element =>
         className="filters"
         >
           <Filter 
-          filter="Frontend"
+          filter={role}
           />
+          <Filter 
+          filter={level}
+          />
+          {languages.map((language) =>
+            {
+              return (
+                <>
+                  <Filter 
+                  filter={language}
+                  />
+                </>
+              )
+            }
+          )}
+          {tools.map((tool) =>
+            {
+              return (
+                <>
+                  <Filter 
+                  filter={tool}
+                  />
+                </>
+              )
+            }
+          )}
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 .posting-container {
   background-color: white;
   border-radius: 10px;
+  margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
@@ -45,6 +46,9 @@
   top: -15px;
 }
 .posting-container .filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   position: relative;
   top: -5px;
 }/*# sourceMappingURL=posting.css.map */

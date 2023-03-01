@@ -7,7 +7,7 @@
 .App {
   background-color: hsl(180, 52%, 96%);
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 .App .header {
   background-color: hsl(180, 29%, 50%);

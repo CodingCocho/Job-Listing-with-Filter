@@ -3,8 +3,8 @@ export interface PostingProps
   id: number;
   company: string;
   logo: string;
-  new: boolean;
-  featured: boolean;
+  isNew: boolean;
+  isFeatured: boolean;
   position: string;
   role: string;
   level: string;

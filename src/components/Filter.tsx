@@ -9,7 +9,7 @@ export const Filter = (props: FilterProp): JSX.Element =>
   return (
     <>
       <div 
-      className="container"
+      className="filter-container"
       >
         {filter}
       </div>
