@@ -13,5 +13,6 @@ export interface PostingProps
   location: string;
   languages: string[];
   tools: string[];
+  show: boolean;
 }
 

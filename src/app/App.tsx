@@ -41,8 +41,8 @@ function App()
                 company={posting.company}
                 contract={posting.contract}
                 id={posting.id}
-                isFeatured={posting.featured}
-                isNew={posting.new}
+                isFeatured={posting.isFeatured}
+                isNew={posting.isNew}
                 languages={posting.languages}
                 level={posting.level}
                 location={posting.location}
@@ -50,6 +50,7 @@ function App()
                 position={posting.position}
                 postedAt={posting.postedAt}
                 role={posting.role}
+                show={posting.show}
                 tools={posting.tools}
                 />
               </>

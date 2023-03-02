@@ -7,81 +7,82 @@ import '../styles/posting.css';
 export const Posting = (props: PostingProps): JSX.Element =>
 {
 
-
-  const {company, contract, isFeatured, id, languages, level, location, logo, isNew, position, postedAt, role, tools} = props;
+  const {company, contract, isFeatured, id, languages, level, location, logo, isNew, position, postedAt, role, show, tools} = props;
 
   return (
     <>
-      <div 
-      className="posting-container"
-      id={id.toString()}
-      >
-        <img 
-        alt="company" 
-        className="logo"
-        src={logo}
-        />
+      {show &&
         <div 
-        className="job-details"
+        className="posting-container"
+        id={id.toString()}
         >
+          <img 
+          alt="company" 
+          className="logo"
+          src={logo}
+          />
           <div 
-          className="flex-container-1"
+          className="job-details"
           >
-            <p 
-            className="company-name"
+            <div 
+            className="flex-container-1"
             >
-              {company}
+              <p 
+              className="company-name"
+              >
+                {company}
+              </p>
+              {isNew && <New />}
+              {isFeatured && <Featured />}
+            </div>
+            <p 
+            className="job-title"
+            >
+              {position}
             </p>
-            {isNew && <New />}
-            {isFeatured && <Featured />}
+            <div 
+            className="job-posting-details"
+            >
+              {postedAt} • {contract} • {location}
+            </div>
           </div>
-          <p 
-          className="job-title"
-          >
-            {position}
-          </p>
+          <hr 
+          className="mobile-divider"
+          />
           <div 
-          className="job-posting-details"
+          className="filters"
           >
-            {postedAt} • {contract} • {location}
+            <Filter 
+            filter={role}
+            />
+            <Filter 
+            filter={level}
+            />
+            {languages.map((language) =>
+              {
+                return (
+                  <>
+                    <Filter 
+                    filter={language}
+                    />
+                  </>
+                )
+              }
+            )}
+            {tools.map((tool) =>
+              {
+                return (
+                  <>
+                    <Filter 
+                    filter={tool}
+                    />
+                  </>
+                )
+              }
+            )}
           </div>
         </div>
-        <hr 
-        className="mobile-divider"
-        />
-        <div 
-        className="filters"
-        >
-          <Filter 
-          filter={role}
-          />
-          <Filter 
-          filter={level}
-          />
-          {languages.map((language) =>
-            {
-              return (
-                <>
-                  <Filter 
-                  filter={language}
-                  />
-                </>
-              )
-            }
-          )}
-          {tools.map((tool) =>
-            {
-              return (
-                <>
-                  <Filter 
-                  filter={tool}
-                  />
-                </>
-              )
-            }
-          )}
-        </div>
-      </div>
+      }
     </>
   )
 }
