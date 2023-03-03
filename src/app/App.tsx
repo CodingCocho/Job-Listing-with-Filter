@@ -1,9 +1,14 @@
 import {Posting} from '../components/Posting';
-import Postings from '../data/data.json';
+import {PostingProps} from '../interfaces/PostingProps';
+import {StoreInterface} from '../interfaces/StoreInterface';
+import {useSelector} from 'react-redux';
 import '../styles/app.css';
+
 
 function App() 
 {
+
+  const jobPostings = useSelector((state: StoreInterface) => state.postings.postings)
 
   return (
     
@@ -31,28 +36,30 @@ function App()
       >
 
         {/* Map out the json data */}
-        {Postings.map((posting) =>
+        {jobPostings.map((posting: PostingProps) =>
           {
             return (
               <>
 
                 {/* Hold the Posting component */}
-                <Posting 
-                company={posting.company}
-                contract={posting.contract}
-                id={posting.id}
-                isFeatured={posting.isFeatured}
-                isNew={posting.isNew}
-                languages={posting.languages}
-                level={posting.level}
-                location={posting.location}
-                logo={posting.logo}
-                position={posting.position}
-                postedAt={posting.postedAt}
-                role={posting.role}
-                show={posting.show}
-                tools={posting.tools}
-                />
+                {posting.show && 
+                  <Posting 
+                  company={posting.company}
+                  contract={posting.contract}
+                  id={posting.id}
+                  isFeatured={posting.isFeatured}
+                  isNew={posting.isNew}
+                  languages={posting.languages}
+                  level={posting.level}
+                  location={posting.location}
+                  logo={posting.logo}
+                  position={posting.position}
+                  postedAt={posting.postedAt}
+                  role={posting.role}
+                  show={posting.show}
+                  tools={posting.tools}
+                  />
+                }
               </>
             )
           }
