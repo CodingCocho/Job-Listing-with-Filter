@@ -29,7 +29,40 @@ const handleAdd = (postings: PostingProps[], filter: string): void =>
 const handleRemove = (postings: PostingProps[], filters: string[]): void =>
 {
   
-  
+   // Loop through the JobPostings
+   for(let counter1: number = 0; counter1 < postings.length; counter1++)
+   {
+
+    // Check if there is no filters
+    if(!filters.length)
+    {
+      postings[counter1].show = true;
+    }
+
+    // Check if the post is hidden
+    else if(!postings[counter1].show)
+    {
+      
+      // Loop through filters
+      for(let counter2: number = 0; counter2 < filters.length; counter2++)
+      {
+
+        // Check if the filter is not found
+        if(postings[counter1].role !== filters[counter2] && postings[counter1].level !== filters[counter2] && 
+          !postings[counter1].languages.includes(filters[counter2]) && !postings[counter1].tools.includes(filters[counter2]))
+        {
+          postings[counter1].show = false; 
+          break;
+        }
+
+        // Temporarly show the posting
+        else
+        {
+          postings[counter1].show = true; 
+        }
+      }
+    }
+   }
 }
 
 const postingsSlice = createSlice(
