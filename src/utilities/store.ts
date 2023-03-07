@@ -6,6 +6,6 @@ export default configureStore(
 {
     reducer: 
     {
-      postings: postingsReducer
+      appState: postingsReducer
     }
 })

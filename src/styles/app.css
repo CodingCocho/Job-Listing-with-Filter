@@ -17,13 +17,23 @@
   height: 100px;
   width: 100%;
 }
-.App .filters-container {
+.App .filters-container-active {
+  align-items: baseline;
   background-color: white;
   border-radius: 5px;
-  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100px;
   margin-left: auto;
   margin-right: auto;
+  padding: 10px;
   position: relative;
   top: -50px;
   width: 350px;
+}
+.App .filters-container {
+  display: none;
+}
+.App .postings {
+  margin-top: 50px;
 }/*# sourceMappingURL=app.css.map */

@@ -1,3 +1,4 @@
+import {ActiveFilter} from '../components/ActiveFilter';
 import {Posting} from '../components/Posting';
 import {PostingProps} from '../interfaces/PostingProps';
 import {StoreInterface} from '../interfaces/StoreInterface';
@@ -8,7 +9,9 @@ import '../styles/app.css';
 function App() 
 {
 
-  const jobPostings = useSelector((state: StoreInterface) => state.postings.postings)
+  const jobPostings = useSelector((state: StoreInterface) => state.appState.postings)
+
+  const activeFilters: string[] = useSelector((state: StoreInterface) => state.appState.filters)
 
   return (
     
@@ -25,14 +28,28 @@ function App()
 
       {/* Hold the container with Post */}
       <div 
-      className="filters-container"
+      className={activeFilters.length === 0 ? "filters-container" : "filters-container-active"}
       >
         {/* Map out active filters */}
+        {
+          activeFilters.map((filter: string) =>
+          {
+            return (
+              <>
+
+                {/* Hold the active filter component */}
+                <ActiveFilter
+                filter={filter}
+                />
+              </>
+            )
+          })
+        }
       </div>
 
       {/* Map out the postings */}
       <div 
-      className="postings"
+      className={activeFilters.length === 0 ? "postings" : "posting-filtered"}
       >
 
         {/* Map out the json data */}

@@ -3,60 +3,56 @@ import {PostingProps} from '../interfaces/PostingProps';
 import {PostingsSliceState} from '../interfaces/PostingsSlice';
 import jobPostings from '../data/data.json'
 
-
 const initialState: PostingsSliceState = 
 {
   postings: jobPostings,
   filters: []
 }
 
-const filterPostings = (postings: PostingProps[], filters: string[], fromAddFilter: boolean): void =>
+const handleAdd = (postings: PostingProps[], filter: string): void =>
 {
-  for(let counter: number = 0; counter < filters.length; counter++)
+  // Loop through the JobPostings
+  for(let counter: number = 0; counter < postings.length; counter++)
   {
-    for(let counter2: number = 0; counter2 < postings.length; counter2++)
+    
+    // Check if it is showing and none of the data fields match
+    if(postings[counter].show && (postings[counter].role !== filter && postings[counter].level !== filter && 
+      !postings[counter].languages.includes(filter) && !postings[counter].tools.includes(filter)))
     {
-      if(!postings[counter2].show && fromAddFilter)
-      {
-        continue;
-      }
-      else if(postings[counter2].role === filters[counter] || postings[counter2].level === filters[counter])
-      {
-        postings[counter2].show = true;
-      }
-      else if(postings[counter2].languages.indexOf(filters[counter]) !== -1)
-      {
-        postings[counter2].show = true;
-      }
-      else if(postings[counter2].tools.indexOf(filters[counter]) !== -1)
-      {
-        postings[counter2].show = true;
-      }
-      else 
-      {
-        postings[counter2].show = false;
-      }
-    }
+
+      // Remove posting from view
+      postings[counter].show = false;
+    }    
   }
+}
+
+const handleRemove = (postings: PostingProps[], filters: string[]): void =>
+{
+  
+  
 }
 
 const postingsSlice = createSlice(
 {
-    name: 'postings',
-    initialState,
-    reducers: {
-        addFilter(state, action) 
-        {
-          state.filters.push(action.payload);
-          filterPostings(state.postings, state.filters, true);
-        },
-        unfilter(state, action)
-        {
-          const index: number = state.filters.indexOf(action.payload);
-          state.filters.splice(index, 1);
-          filterPostings(state.postings, state.filters, false);
-        }
+  name: 'postings',
+  initialState,
+  reducers: 
+  {
+    addFilter(state, action) 
+    {
+      if(!state.filters.includes(action.payload)) 
+      {
+        state.filters.push(action.payload);
+        handleAdd(state.postings, action.payload);
+      }
+    },
+    unfilter(state, action)
+    {
+      const index: number = state.filters.indexOf(action.payload);
+      state.filters.splice(index, 1);
+      handleRemove(state.postings, state.filters);
     }
+  }
 })
 
 export const {addFilter, unfilter} = postingsSlice.actions;
