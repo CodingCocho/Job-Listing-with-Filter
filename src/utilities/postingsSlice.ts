@@ -51,6 +51,8 @@ const handleRemove = (postings: PostingProps[], filters: string[]): void =>
         if(postings[counter1].role !== filters[counter2] && postings[counter1].level !== filters[counter2] && 
           !postings[counter1].languages.includes(filters[counter2]) && !postings[counter1].tools.includes(filters[counter2]))
         {
+
+          // Hide the posting
           postings[counter1].show = false; 
           break;
         }
