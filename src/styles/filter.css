@@ -1,10 +1,17 @@
 .filter-container
 {
   background-color: hsl(180, 31%, 95%);
+  border-radius: 5px;
   color: hsl(180, 29%, 50%);
   cursor: pointer;
   font-size: 15px;
   font-weight: 700;
-  padding: 2px;
+  padding: 5px;
   width: fit-content;
+}
+
+.filter-container:hover
+{
+  background-color: hsl(180, 29%, 50%);
+  color: hsl(180, 31%, 95%)
 }

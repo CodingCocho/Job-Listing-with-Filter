@@ -8,47 +8,104 @@
   padding-bottom: 5px !important;
   width: 350px;
 }
-.posting-container .logo {
+
+.posting-container-new {
+  background-color: white;
+  border-left: 5px solid hsl(180, 29%, 50%);
+  border-radius: 10px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  padding-bottom: 5px !important;
+  width: 350px;
+}
+
+.logo {
   height: 50px;
   position: relative;
   top: -35px;
   width: 50px;
 }
-.posting-container .job-details {
+
+.job-details {
   position: relative;
   top: -25px;
 }
-.posting-container .job-details .flex-container-1 {
+.job-details .flex-container-1 {
   display: flex;
 }
-.posting-container .job-details .flex-container-1 .company-name {
+.job-details .flex-container-1 .company-name {
   color: hsl(180, 29%, 50%);
   font-size: 15px;
   font-weight: 700;
   margin-top: 5px;
 }
-.posting-container .job-details .job-title {
+.job-details .job-title {
   color: hsl(180, 14%, 20%);
+  cursor: pointer;
   font-size: 15px;
   font-weight: 700;
   margin-top: 5px;
 }
-.posting-container .job-details .job-posting-details {
+.job-details .job-title:hover {
+  color: hsl(180, 29%, 50%);
+}
+.job-details .job-posting-details {
   color: hsl(180, 29%, 50%);
   font-size: 15px;
   margin-top: 5px;
 }
-.posting-container .mobile-divider {
+
+.mobile-divider {
   background-color: hsl(180, 29%, 50%);
   height: 1px;
   outline: none;
   position: relative;
   top: -15px;
 }
-.posting-container .filters {
+
+.filters {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
   top: -5px;
+}
+
+@media screen and (min-width: 1440px) {
+  .posting-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px !important;
+    width: 750px;
+  }
+  .posting-container-new {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px !important;
+    width: 750px;
+  }
+  .desktop-flex-container {
+    align-items: center;
+    display: flex;
+  }
+  .logo {
+    height: 75px;
+    top: 0px;
+    width: 75px;
+  }
+  .job-details {
+    margin-left: 25px;
+    position: relative;
+    top: 0px;
+  }
+  .mobile-divider {
+    display: none;
+  }
+  .filters {
+    width: 50%;
+  }
 }/*# sourceMappingURL=posting.css.map */

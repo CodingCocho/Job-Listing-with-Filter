@@ -13,7 +13,7 @@
   .header
   {
     background-color: hsl(180, 29%, 50%);
-    background-image: url('../images/bg-header-mobile.svg');
+    background-image: url('../../public/images/bg-header-mobile.svg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100px;
@@ -41,5 +41,25 @@
   .postings
   {
     margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: 1440px)
+{
+  .App
+  {
+    .header
+    {
+      background-image: url('../../public/images/bg-header-desktop.svg');
+      height: 150px;
+    }
+    .filters-container-active
+    {
+      min-height: 50px;
+      padding-left: 25px;
+      padding-right: 25px;
+      top: -25px;
+      width: 750px;
+    }
   }
 }

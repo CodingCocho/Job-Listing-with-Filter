@@ -3,12 +3,19 @@ import {PostingProps} from '../interfaces/PostingProps';
 import {PostingsSliceState} from '../interfaces/PostingsSlice';
 import jobPostings from '../data/data.json'
 
+// Hold the initial state 
 const initialState: PostingsSliceState = 
 {
   postings: jobPostings,
   filters: []
 }
 
+/*
+* Handle the addition of a filter
+* @param posting the postings from state
+* filter the filter added
+* @return void
+*/
 const handleAdd = (postings: PostingProps[], filter: string): void =>
 {
   // Loop through the JobPostings
@@ -26,6 +33,12 @@ const handleAdd = (postings: PostingProps[], filter: string): void =>
   }
 }
 
+/*
+* Handle the remove of a filter
+* @param posting the postings from state
+* filters the active filters
+* @return void
+*/
 const handleRemove = (postings: PostingProps[], filters: string[]): void =>
 {
   
@@ -67,12 +80,15 @@ const handleRemove = (postings: PostingProps[], filters: string[]): void =>
    }
 }
 
+// Hold the posting slice for the app state
 const postingsSlice = createSlice(
 {
   name: 'postings',
   initialState,
   reducers: 
   {
+
+    // Handles adding a filter to the app state 
     addFilter(state, action) 
     {
       if(!state.filters.includes(action.payload)) 
@@ -81,6 +97,8 @@ const postingsSlice = createSlice(
         handleAdd(state.postings, action.payload);
       }
     },
+
+    // Handles removing a filter from the app state
     unfilter(state, action)
     {
       const index: number = state.filters.indexOf(action.payload);

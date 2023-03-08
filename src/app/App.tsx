@@ -9,8 +9,10 @@ import '../styles/app.css';
 function App() 
 {
 
+  // Hold the active job postings from redux store
   const jobPostings = useSelector((state: StoreInterface) => state.appState.postings)
 
+  // Hold the active filters from redux store
   const activeFilters: string[] = useSelector((state: StoreInterface) => state.appState.filters)
 
   return (
@@ -26,10 +28,11 @@ function App()
       >
       </div>
 
-      {/* Hold the container with Post */}
+      {/* Hold the container with the active filters */}
       <div 
       className={activeFilters.length === 0 ? "filters-container" : "filters-container-active"}
       >
+
         {/* Map out active filters */}
         {
           activeFilters.map((filter: string) =>
@@ -52,13 +55,13 @@ function App()
       className={activeFilters.length === 0 ? "postings" : "posting-filtered"}
       >
 
-        {/* Map out the json data */}
+        {/* Map out the redux state */}
         {jobPostings.map((posting: PostingProps) =>
           {
             return (
               <>
 
-                {/* Hold the Posting component */}
+                {/* Conditional render the posting component */}
                 {posting.show && 
                   <Posting 
                   company={posting.company}
